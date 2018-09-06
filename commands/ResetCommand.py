@@ -8,6 +8,7 @@ class ResetCommand(AbstractCommand):
         connection = self.connection.get_connection()
         c = connection.cursor()
         c.execute(Location.get_delete_by_user_id_query(message_info.get_user().get_id()))
+        connection.commit()
         self.connection.close_connection()
         self.bot.send_message(
             self.get_message_info(message).get_chat().get_id(),
