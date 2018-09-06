@@ -7,7 +7,7 @@ class DbConnection:
 
     def get_connection(self):
         if self.connection is None:
-            self.connection = sqlite3.connect('db.sqlite3', check_same_thread=False, connect_args={'timeout': 15})
+            self.connection = sqlite3.connect('db.sqlite3', check_same_thread=False, timeout=10)
 
         return self.connection
 
