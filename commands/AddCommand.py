@@ -76,9 +76,9 @@ class AddCommand(AbstractCommand):
     def save(self, message):
         connection = self.connection.get_connection()
         c = connection.cursor()
-        print(self.get_location().get_insert_query())
         c.execute(self.get_location().get_insert_query())
         connection.commit()
+        self.connection.close_connection()
 
         self.bot.send_message(self.get_message_info(message).get_chat().get_id(), 'Location successfully saved')
         self.reload()

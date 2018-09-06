@@ -9,6 +9,7 @@ class ListCommand(AbstractCommand):
         c = connection.cursor()
         c.execute(Location.get_find_by_user_id_query(message_info.get_user().get_id()))
         locations = c.fetchall()
+        self.connection.close_connection()
 
         chat_id = message_info.get_chat().get_id()
 
