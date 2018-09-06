@@ -6,12 +6,14 @@ phases:
 
       # Upgrade AWS CLI to the latest version
       - pip install --upgrade awscli
+      - pip install pyTelegramBotAPI==3.6.5
 
   pre_build:
     commands:
 
       # Discover and run unit tests in the 'tests' directory. For more information, see <https://docs.python.org/3/library/unittest.html#test-discovery>
       - python -m unittest discover tests
+      - python init.py
   
   build:
     commands:
