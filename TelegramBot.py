@@ -1,3 +1,5 @@
+import time
+
 import telebot
 
 from DbConnection import DbConnection
@@ -76,4 +78,8 @@ class TelegramBot:
                 bot.send_message(message_info.get_chat().get_id(), message_info.get_text())
 
     def run(self):
-        self.bot.polling()
+        while True:
+            try:
+                self.bot.polling()
+            except Exception:
+                time.sleep(10)
